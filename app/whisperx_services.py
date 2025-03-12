@@ -316,10 +316,13 @@ def process_audio_common(params: SpeechToTextProcessingParams, session):
         logger.debug("Starting to combine transcript with diarization results")
         result = assign_word_speakers(diarization_segments, transcript)
 
-        for segment in result["segments"]:
-            del segment["words"]
+        # The original code deletes words and word_segments from the result, but we need word-level
+        # transcription, so keep them here.
 
-        del result["word_segments"]
+        # for segment in result["segments"]:
+        #     del segment["words"]
+        #
+        # del result["word_segments"]
 
         logger.debug("Completed combining transcript with diarization results")
 
