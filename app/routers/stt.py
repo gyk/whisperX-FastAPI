@@ -155,6 +155,8 @@ async def speech_to_text_url(
         temp_audio_file = NamedTemporaryFile(suffix=original_extension, delete=False)
         for chunk in response.iter_content(chunk_size=8192):
             temp_audio_file.write(chunk)
+        temp_audio_file.flush()
+        temp_audio_file.close()
 
     logger.info("File downloaded and saved temporarily: %s", temp_audio_file.name)
     validate_extension(temp_audio_file.name, ALLOWED_EXTENSIONS)
