@@ -2,6 +2,7 @@
 
 import logging
 import os
+import shutil
 from tempfile import NamedTemporaryFile
 
 from fastapi import HTTPException
@@ -59,6 +60,6 @@ def save_temporary_file(temporary_file, original_filename):
 
     # Write the contents of the SpooledTemporaryFile to the temporary file
     with open(temp_filename, "wb") as dest:
-        dest.write(temporary_file.read())
+        shutil.copyfileobj(temporary_file, dest)
 
     return temp_filename
