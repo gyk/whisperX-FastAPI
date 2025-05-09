@@ -1736,6 +1736,7 @@ components:
       - distil-small.en
       - distil-large-v3
       - nyrahealth/faster_CrisperWhisper
+      - Huan69/Belle-whisper-large-v3-zh-punct-fasterwhisper
       title: WhisperModel
       description: Enum for Whisper model types.
 tags:
